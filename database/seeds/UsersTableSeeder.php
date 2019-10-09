@@ -15,13 +15,23 @@ class UsersTableSeeder extends Seeder
 
             [
                 'name' => 'ADMIN WEBMASTER',
-                'email' => 'admin@2enapps.my',
+                'email' => 'admin@admin.com',
                 'password' => Hash::make('admin'),
                 'phone'=>'031313131',
                 'address'=>'ABC STREET',
                 'fax'=>'1352544'
-
             ],
+            [
+                'name' => 'SAMPLE USER',
+                'email' => 'user@user.com',
+                'password' => Hash::make('user'),
+                'phone'=>'031313131',
+                'address'=>'ABC STREET',
+                'fax'=>'1352544'
+            ],
+
+
+
 
         ]);
     }

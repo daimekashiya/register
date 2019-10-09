@@ -17,14 +17,13 @@
                 <!-- Card body -->
                 <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1" style="">
                     <div class="card-body company">
-                        <form>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Air Freight Forwarding
-                                </label>
-                            </div>
-                        </form>
+                      
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Air Freight Forwarding
+                            </label>
+                        </div>                    
                     </div>
                 </div>
             </div>
@@ -34,6 +33,7 @@
     </div>
 
     <div class="col-lg-9 companyname">
+
         <div class="card">
             <div class="card-header">
                 A &amp; T Freight Management Pte Ltd
@@ -54,12 +54,18 @@
                             <span><i class="fa fa-print" aria-hidden="true"></i> 6276-1661</span>
                         </p>
                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> Blk 511 Kampong Bahru Road #04-03 Keppel Distripark Singapore 099447</p>
+
+                        @permission('approve_company')
+                            <a href="{{URL::to('membership/approve') }}" class="btn btn-primary float-right">Approve</a>
+                        @endpermission
+
                     </div>
                 </div>
             </div>
         </div> 
   
         <nav aria-label="pagination float-right">
+            <br>
             <ul class="pagination">
                 <li class="page-item disabled">
                 <a class="page-link" href="#" tabindex="-1">Previous</a>

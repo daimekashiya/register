@@ -1,10 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.membership')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        @include('membership.create')
-        @include('membership.login')
-    </div>
-</div>
+    @include('membership.index')
 @endsection

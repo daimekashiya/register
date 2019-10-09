@@ -23,16 +23,18 @@ class CreateCompaniesTable extends Migration
             $table->string('fax')->nullable();
             $table->string('person_in_charge_name')->nullable();
             $table->string('specialize_in_description')->nullable();
+            $table->string('reason_to_join')->nullable();
             $table->string('logo_url')->nullable();
             $table->string('website_url')->nullable();
-            $table->boolean('confirmed')->default(0);
+            $table->boolean('approved')->default(0);
 
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users');
 
 
-            $table->timestamps()->useCurrent();
+            $table->timestamp('created_at')->useCurrent = true;
+            $table->timestamp('updated_at')->useCurrent = true;
         });
     }
 

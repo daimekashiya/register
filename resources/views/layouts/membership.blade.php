@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name') }}
+                    {{-- {{ config('app.name') }} --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -41,17 +41,22 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                @if(Route::currentRouteName() == 'login' )
+                                <a class="nav-link" href="{{ URL::to('/') }}">Home</a>
+                                @else
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                @endif
+                                
                             </li>
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ strtoupper(Auth::user()->name) }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -72,8 +77,20 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main>
+            <div class="container">
+                <div class="row">
+                    @if( sizeof($errors->all() ) > 0)
+                        @foreach ($errors->all() as $error)
+                        <span class="invalid-feedback col-lg-12" role="alert">
+                            <strong>{{ $error }}</strong>
+                        </span>
+                        @endforeach
+                    @endif
+
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 </body>

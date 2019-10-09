@@ -13,9 +13,10 @@ class DatabaseSeeder extends Seeder
     {
        
         $this->call(LkpCategoriesTableSeeder::class);
-        $this->call(PermissionRoleTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
+        $this->call(PermissionRoleTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(RoleUserTableSeeder::class);
     }
 }

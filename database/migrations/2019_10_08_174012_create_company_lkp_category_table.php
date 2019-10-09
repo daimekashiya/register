@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyLkpCategoriesTable extends Migration
+class CreateCompanyLkpCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateCompanyLkpCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_lkp_categories', function (Blueprint $table) {
+        Schema::create('company_lkp_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('lkp_category_id');
-            $table->timestamps()->useCurrent();
+            $table->timestamp('created_at')->useCurrent = true;
+            $table->timestamp('updated_at')->useCurrent = true;
 
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('lkp_category_id')->references('id')->on('lkp_categories');
@@ -31,6 +32,6 @@ class CreateCompanyLkpCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_lkp_categories');
+        Schema::dropIfExists('company_lkp_category');
     }
 }

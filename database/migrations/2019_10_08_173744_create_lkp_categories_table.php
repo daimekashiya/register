@@ -16,7 +16,8 @@ class CreateLkpCategoriesTable extends Migration
         Schema::create('lkp_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('description')->nullable();
-            $table->timestamps()->useCurrent();
+            $table->timestamp('created_at')->useCurrent = true;
+            $table->timestamp('updated_at')->useCurrent = true;
         });
     }
 

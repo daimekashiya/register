@@ -25,7 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('fax')->nullable();
 
             $table->rememberToken();
-            $table->timestamps()->useCurrent();
+            $table->timestamp('created_at')->useCurrent = true;
+            $table->timestamp('updated_at')->useCurrent = true;
         });
     }
 

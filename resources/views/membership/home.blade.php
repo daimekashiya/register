@@ -5,7 +5,6 @@
         @permission('approve_company')
             @include('membership.index')
         @else
-            @include('membership.menu')
             @include('membership.edit')
         @endpermission
     @else

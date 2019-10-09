@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Bridge;
+namespace App\Models\Membership\Bridge;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 

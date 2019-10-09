@@ -24,13 +24,13 @@
 
     <div class="form-group col-lg-6">
       <label>Password </label>
-      <input type="password" class="form-control" placeholder="Enter Password" name="password" required>  
+      <input type="password" class="form-control" placeholder="8 Character Minimum" name="password" required>  
     </div>
 
 
     <div class="form-group col-lg-6">
       <label>Re-Type Password </label>
-      <input type="password" class="form-control" placeholder="Re-enter Password" name="password_confirmation" required>  
+      <input type="password" class="form-control" placeholder="8 Character Minimum" name="password_confirmation" required>  
     </div>
 
     <div class="form-group col-lg-6">
@@ -74,14 +74,8 @@
       <h5>Categories</h5>
     </div>
     
-    @foreach( \App\Models\Lkp\LkpCategory::all() as $category )
-    <div class="form-group col-lg-3">
-      <input type="checkbox" name="categories[]" value="{{$category->id}}">  
-      <label>{{$category->description}}</label>
-    </div>
-    @endforeach
-    
-    
+    @include('_partials.lkp.lkpcategories.dropdown')
+  
     <div class="form-group col-lg-12">
       <button type="submit" class="btn btn-primary" id="registerform">Register Now</button>
     </div>

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 
-use App\Models\Company;
-use App\Models\Bridge\CompanyLkpCategory;
+use App\Models\Membership\Company;
+use App\Models\Membership\Bridge\CompanyLkpCategory;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -98,6 +98,7 @@ class RegisterController extends Controller
 
         $company = new Company;
         $company->name = $data['company_name'];
+        $company->email = $data['email'];
         $company->person_in_charge_name = $data['person_in_charge_name'];
         $company->phone = $data['phone'];
         $company->fax = $data['fax'];
@@ -108,10 +109,11 @@ class RegisterController extends Controller
         $company->user_id = $user->id;
         $company->save();
 
-        Storage::put( $company->id.'.'.$data['logo']->extension() , $data['logo'] );
+        Storage::disk('public')->put( $company->id.'.'.$data['logo']->extension() , file_get_contents($data['logo']) );
+        //Storage::put( 'images' , $data['logo'] );
 
         $co = Company::find($company->id);
-        $co->logo_url = Storage::url( $co->id.'.'.$data['logo']->extension() );
+        $co->logo_url = $co->id.'.'.$data['logo']->extension();
         $co->save();
 
 

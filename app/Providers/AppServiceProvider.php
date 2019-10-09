@@ -27,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // View::composer( ['membership.create','membership.edit'] , function($view) {
+        //     $view->with( 'categories', LkpCategory::all() );
+        // });
+        
         View::composer( ['_partials.lkp.lkpcategories.*'] , LkpCategoriesComposer::class );
     }
 }

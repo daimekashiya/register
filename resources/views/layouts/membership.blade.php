@@ -61,7 +61,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
-                                    <a class="dropdown-item" href="{{ URL::to('/') }}">Home</a>
+                                    <a class="dropdown-item" href="{{ URL::to('/') }}">Public</a>
                                     <a class="dropdown-item" href="{{ URL::to('home') }}">Company</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -91,6 +91,15 @@
                         </span>
                         @endforeach
                     @endif
+
+
+                    @if(session()->has('success'))
+                        <div class="alert alert-success col-lg-12">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+
 
                     @yield('content')
                 </div>

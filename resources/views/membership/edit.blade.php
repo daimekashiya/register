@@ -1,5 +1,5 @@
-<div class="col-lg-12" style="padding-left: 50px;">
-    <form class="form-group p-30 row" method="post" action="{{ Auth::user()->company != null ? URL::to('membership/update/'.Auth::user()->company->id) : route('register') }}" enctype="multipart/form-data">
+<div class="col-lg-11" style="padding-left: 50px;">
+    <form class="form-group p-30 row" method="post" action="{{ Auth::user()->company != null ? URL::to('membership/update/'.Auth::user()->id) : route('register') }}" enctype="multipart/form-data">
         @csrf
         <h1 class="border-bottom p-30">
         {{ Auth::user()->company != null ? 'Update Company' : 'New Registration' }}

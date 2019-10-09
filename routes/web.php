@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('membership/update/{id}', 'MembershipController@update');
+Route::get('/membership/approve/{id}', 'MembershipController@approve');

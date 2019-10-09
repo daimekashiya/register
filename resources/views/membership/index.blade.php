@@ -9,7 +9,7 @@
                 <div class="card-header" role="tab" id="headingTwo1">
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
                         <h5 class="mb-0">
-                            Activities &amp; Services <i class="fa fa-angle-down rotate-icon" style="float:right;"></i>
+                            Categories<i class="fa fa-angle-down rotate-icon" style="float:right;"></i>
                         </h5>
                     </a>
                 </div>
@@ -33,53 +33,65 @@
     </div>
 
     <div class="col-lg-9 companyname">
+        @permission('approve_company')
+        @php 
+            $companies = \App\Models\Membership\Company::paginate(10) ; 
+        @endphp
+        @else
+        @php 
+            $companies = \App\Models\Membership\Company::whereApproved(1)->paginate(10) ; 
+        @endphp
+        @endpermission
 
-        <div class="card">
-            <div class="card-header">
-                A &amp; T Freight Management Pte Ltd
+        @if($companies->count() > 0)
+        @foreach($companies as $company)
+        <div class="card" style="width:60vw">
+            <div class="card-header" >
+                {{$company->name}}
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-4">
-                        <div style="background:url(http://rubickstudio.com/pplbdev/assets/images/logo/1.png);background-repeat: no-repeat;background-size: cover;padding: 5px;width:100%;height: 200px;"></div>
+                        <div style="background:url({{ $company->logo_url ? asset('storage/'.$company->logo_url ) : 'http://rubickstudio.com/pplbdev/assets/images/logo/1.png' }});background-repeat: no-repeat;background-size: cover;padding: 5px;width:100%;height: 200px;"></div>
                     </div>
                     <div class="col-lg-8 align-self-center">
-                        <p><b>A &amp; T Freight Management Pte Ltd</b></p>
-                        <p>Specialized in Consolidation / NVOCC, Hazardous Cargo &amp; Chemical Specialist, Sea Freight Forwarding, Warehousing &amp; Storage</p>
-                        <p>Industries: Automotive, Fashion &amp; Apparel</p>
+                        <p><b>{{$company->name}}</b></p>
+                        <p>{{$company->specialize_in_description}}</p>
+                        @if($company->lkp_categories->count() > 0)
+                        @foreach($company->lkp_categories as $category)
+                            <span class="badge badge-primary">{{$category->description}}</span>
+                        @endforeach
+                        <br><br>
+                        @endif
                         <p class="specialized">
-                            <span><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="memberdirectory" href="mailto:jean@atfreight.com"> jean@atfreight.com</a> </span>
-                            <span><i class="fa fa-link" aria-hidden="true"></i><a href="http://www.atfreight.com" target="_blank"> http://www.atfreight.com</a> </span>
-                            <span><i class="fa fa-volume-control-phone" aria-hidden="true"></i> 6276-6116 </span>
-                            <span><i class="fa fa-print" aria-hidden="true"></i> 6276-1661</span>
+                            <span><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="memberdirectory" href="mailto:{{$company->email}}"> {{$company->email}}</a> </span>
+                            <span><i class="fa fa-link" aria-hidden="true"></i><a href="{{$company->website_url}}" target="_blank"> {{$company->website_url}}</a> </span>
+                            <span><i class="fa fa-volume-control-phone" aria-hidden="true"></i> {{$company->phone}} </span>
+                            <span><i class="fa fa-print" aria-hidden="true"></i> {{$company->fax}}</span>
                         </p>
-                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> Blk 511 Kampong Bahru Road #04-03 Keppel Distripark Singapore 099447</p>
+                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{$company->address}}</p>
 
                         @permission('approve_company')
-                            <a href="{{URL::to('membership/approve') }}" class="btn btn-primary float-right">Approve</a>
+                            @if($company->approved == 0)
+                            <a href="{{URL::to('membership/approve/'.$company->id) }}" class="btn btn-warning float-right">Approve</a>
+                            @endif
                         @endpermission
 
                     </div>
                 </div>
             </div>
         </div> 
-  
-        <nav aria-label="pagination float-right">
-            <br>
-            <ul class="pagination">
-                <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li class="page-item ">
-                <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+        @endforeach
+        {{$companies->links()}}
+
+        @else
+        <div class="card">
+            <div class="card-header">
+               Tiada
+            </div>
+        </div> 
+        @endif
+        
 
     </div>
     

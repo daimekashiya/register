@@ -1,6 +1,11 @@
-@extends('layouts.membership')
+@extends('layouts.theme.header1')
 
-@section('content')
-    @include('membership.login')
-    @include('membership.create')
-@endsection
+            
+
+
+    @section('content')
+        @include('membership.login2')
+
+    @endsection
+
+    

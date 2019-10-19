@@ -12,7 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('membership.welcome');
+    return view('auth.login');
+});
+
+Route::get('theme', function () {
+    return view('test.welcome');
+});
+
+
+Route::group(['prefix' => 'theme'], function() {
+    Route::group(['prefix' => 'demo'], function() {
+        Route::get('home/{id}', 'theme\DemoController@home');
+    });
 });
 
 Auth::routes();

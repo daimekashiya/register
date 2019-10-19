@@ -1,4 +1,4 @@
-@extends('layouts.membership')
+@extends('layouts.theme.header1')
 
 @section('content')
     @auth

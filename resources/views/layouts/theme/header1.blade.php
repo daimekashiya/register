@@ -42,6 +42,11 @@
   ============================================ -->
   <link rel="stylesheet" type="text/css" media="all" href="{{asset('green_blue/css/style.css')}}">
   <link rel="stylesheet" type="text/css" media="all" href="{{asset('green_blue/css/responsive.css')}}">
+
+
+  <!-- Bootstrap 4.3.1 
+  ============================================ -->
+  {{-- <link rel="stylesheet" type="text/css" media="all" href="{{asset('bootstrap-4.3.1/css/bootstrap.min.css')}}"> --}}
   
   
   
@@ -112,13 +117,13 @@
                 <li><a href="{{ route('login') }}">{{ __('layouts.client_login') }}</a></li>
                 @endguest
                 
-                <li class="lang-button"><a href="#">{{ __('layouts.english') }}</a>
+                {{-- <li class="lang-button"><a href="#">{{ __('layouts.english') }}</a>
                   <ul class="dropdown-list">
                     <li><a href="#">{{ __('layouts.english') }}</a></li>
                     <li><a href="#">{{ __('layouts.german') }}</a></li>
                     <li><a href="#">{{ __('layouts.spanish') }}</a></li>
                   </ul>
-                </li>
+                </li> --}}
 
                 
                 
@@ -157,7 +162,7 @@
 
               <!--Logo-->
               
-              <a href="index.html" class="logo">
+              <a href="{{URL::to('/')}}" class="logo">
           
                 <img src="{{asset('pplb-logo.png')}}" alt="">
 
@@ -407,6 +412,11 @@
   ============================================ -->
   <script src="{{asset('green_blue/js/plugins.js')}}"></script>
   <script src="{{asset('green_blue/js/script.js')}}"></script>
+
+
+  <!-- Bootstrap 4.3.1 
+  ============================================ -->
+  {{-- <script src="{{asset('bootstrap-4.3.1/js/bootstrap.min.js')}}"></script> --}}
   
 </body>
 </html>

@@ -4,7 +4,7 @@
 
 
     @section('content')
-        @include('membership.login2')
+        @include('membership.login')
 
     @endsection
 

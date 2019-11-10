@@ -1,5 +1,5 @@
 @foreach( $LkpCategories as $category )
-<div class="form-group col-lg-3">
+<div class="form-group col-md-3">
     <input type="checkbox" name="categories[]" value="{{$category->id}}"
         @isset($company)
             @if( $company != null)

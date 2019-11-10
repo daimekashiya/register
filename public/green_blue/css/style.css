@@ -2503,7 +2503,7 @@ button.search-button:before{content: "\e922";}
 
     input[type="radio"],
     input[type="checkbox"]{
-      display: none;
+      /* display: none; */
     }
 
     input[type="radio"] + label,

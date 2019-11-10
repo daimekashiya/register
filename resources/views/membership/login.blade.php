@@ -1,32 +1,63 @@
-
-<div class="col-lg-4 border-right text-white rounded" style="background-color:#083872;height:100vh;" >
-  <form class="form-group p-30" method="POST" action="{{ route('login') }}">
-    @csrf
-    <br>
-    <h1 class="border-bottom p-30 ">Login User</h1>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Username</label>
-      <input type="text" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
-      @error('email')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-      @enderror
-
-
-      
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" name="password" required autocomplete="current-password" class="form-control" placeholder="Password">
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : null }}>
-      <label class="form-check-label" for="exampleCheck1">Stay Logged In</label>
-    </div>
-    <input type="hidden" name="form[method]" value="login">
-    <button type="submit" class="btn btn-primary" id="loginform">Submit</button>
+<div id="content" class="with-separator-left sbl">
     
-  </form>
-  <br>
+    <div class="container">
+        
+        <div class="row">
+
+            <!-- Sidebar-->
+            <aside id="sidebar" class="col-md-4">
+                
+                <!-- page-section -->
+                <div class="page-section">
+
+                    <!-- widget -->
+                    <div class="widget">
+
+                        <h5 class="widget-title">{{__('Login')}}</h5>
+                        <form class="form-style1 with-icon" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="form-column-full">
+                                <div class="relative">
+                                    <input type="text" name="email" value="{{ old('email') }}" aria-describedby="emailHelp"  required autocomplete="email" autofocus  placeholder="{{__('layouts.email_address')}}">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="form-column-full">
+                                <div class="relative">
+                                    <input type="password" name="password" required autocomplete="current-password"  placeholder="{{__('layouts.password')}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-check" style="display:none;">
+                                <input type="checkbox"  name="remember" {{ old('remember') ? 'checked' : null }}>
+                                <label class="form-check-label" for="exampleCheck1">Stay Logged In</label>
+                            </div>
+                            <input type="hidden" name="form[method]" value="login">
+
+
+                            <div class="form-column-full">
+                                <button type="submit" class="btn btn-primary float-right">{{__('Login')}}</button>
+                            </div>
+
+                        </form>
+                        
+                    </div>
+                
+
+                </div>
+
+            </aside>
+            
+            @include('membership.create')
+
+        </div>
+
+    </div>
+
 </div>

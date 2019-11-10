@@ -13,6 +13,7 @@ return [
     'about' => 'About',
     'client_login' => 'Client Login',
     'email_address' => 'Email Address',
+    'company_list' => 'Company List',
     
     //language
     'english' => 'English',

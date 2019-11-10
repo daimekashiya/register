@@ -4,8 +4,7 @@
     @auth
         @permission('approve_company')
             @include('membership.index')
-        @else
-            
+        @else 
             @include('membership.edit')
         @endpermission
     @else

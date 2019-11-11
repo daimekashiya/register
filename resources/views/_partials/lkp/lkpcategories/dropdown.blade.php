@@ -12,3 +12,8 @@
     <label>{{$category->description}}</label>
 </div>
 @endforeach
+@error('categories[]')
+<span class="invalid-feedback" role="alert">
+    <strong style="color:red">{{ $message }}</strong>
+</span>
+@enderror

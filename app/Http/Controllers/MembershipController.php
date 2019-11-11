@@ -111,7 +111,7 @@ class MembershipController extends Controller
     
         if($request->logo)
         {
-            Storage::disk('public')->put( $company->id.'.'.$request->logo->extension() , file_get_contents($request->logo) );
+            Storage::disk('cpanel')->put( $company->id.'.'.$request->logo->extension() , file_get_contents($request->logo) );
 
             $co = Company::find($company->id);
             $co->logo_url = $co->id.'.'.$request->logo->extension();

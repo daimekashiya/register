@@ -55,6 +55,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'cpanel' => [
+            'driver'=>'local',
+            'root' => dirname(__DIR__, 1).'/public/storage',
+            'visibility' => 'public'
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -110,7 +110,7 @@ class RegisterController extends Controller
         $company->user_id = $user->id;
         $company->save();
 
-        Storage::disk('public')->put( $company->id.'.'.$data['logo']->extension() , file_get_contents($data['logo']) );
+        Storage::disk('cpanel')->put( $company->id.'.'.$data['logo']->extension() , file_get_contents($data['logo']) );
         //Storage::put( 'images' , $data['logo'] );
 
         $co = Company::find($company->id);

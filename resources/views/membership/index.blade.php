@@ -36,15 +36,21 @@
         
               <div class="col-sm-6">
                 
-                @permission('approve_company')
-                @php 
-                    $companies = \App\Models\Membership\Company::paginate(10) ; 
-                @endphp
+                @auth
+                  @if(Auth::user()->permissions()->where('name','approve_company')->count() > 0)
+                  @php 
+                      $companies = \App\Models\Membership\Company::paginate(10) ; 
+                  @endphp
+                  @else
+                  @php 
+                      $companies = \App\Models\Membership\Company::whereApproved(1)->paginate(10) ; 
+                  @endphp
+                  @endif
                 @else
-                @php 
+                  @php
                     $companies = \App\Models\Membership\Company::whereApproved(1)->paginate(10) ; 
-                @endphp
-                @endpermission
+                  @endphp
+                @endauth
         
                 @if($companies->count() > 0)
                 @foreach($companies as $company)
@@ -63,11 +69,13 @@
 
                       <span class="author-name">{{$company->email}}</span>
                       <span class="author-position">Phone:{{$company->phone}}</span>
-                      @permission('approve_company')
+                      @auth
+                      @if(Auth::user()->permissions()->where('name','approve_company')->count() > 0)
                       @if($company->approved == 0)
                       <span class="author-position"><a href="{{URL::to('membership/approve/'.$company->id) }}" class="btn btn-small btn-primary" style="width:100%">Approve</a></span>
                       @endif
-                      @endpermission                      
+                      @endif   
+                      @endauth                
 
 
                     </div>
@@ -112,7 +120,7 @@
                 @else
                 <div class="card">
                     <div class="card-header">
-                       Tiada
+                        No Companies yet
                     </div>
                 </div> 
                 @endif

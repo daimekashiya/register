@@ -2,11 +2,11 @@
 
 @section('content')
     @auth
-        @permission('approve_company')
+        @if(Auth::user()->permissions()->where('name','approve_company')->count() > 0 )
             @include('membership.index')
         @else 
             @include('membership.edit')
-        @endpermission
+        @endif
     @else
         @include('membership.index')
     @endauth

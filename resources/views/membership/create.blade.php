@@ -1,13 +1,25 @@
+
+
+
 <div class="col-md-8">
   <h5 style="font-weight: 600;">{{__('Register')}}</h5>
   <form class="form-group p-30 row" method="post" action="{{ route('register') }}" enctype="multipart/form-data">
+    <div class="form-group col-md-12">
+        @if ($errors->any())
+        @foreach( $errors->all() as $e) 
+        <div class='alert alert-error'>
+          <button type='button' class='close' data-dismiss='alert'></button>
+          {{$e}}
+        </div>
+        @endforeach
+      @endif 
+    </div>    
+    
     @csrf
+    
     <div class="form-group col-md-12">
       <label>Company / Organization Name</label>
       <input type="text" class="form-control" placeholder="Enter Company / Organization Name" name="company_name" >  
-
-
-
     </div>
 
     <div class="form-group col-md-6">
@@ -33,12 +45,12 @@
 
     <div class="form-group col-md-6">
       <label>Contact Number</label>
-      <input type="text" class="form-control" placeholder="Enter Contact Number" name="phone" >  
+      <input type="text" class="form-control" placeholder="Must be numeric" name="phone" >  
     </div>
 
     <div class="form-group col-md-6">
       <label>Fax Number</label>
-      <input type="text" class="form-control" placeholder="Enter Fax Number" name="fax" >  
+      <input type="text" class="form-control" placeholder="Must be numeric" name="fax" >  
     </div>
    
     <div class="form-group col-md-6">

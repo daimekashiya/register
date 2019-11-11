@@ -6,12 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use daimekashiya\Entrust\Traits\EntrustUserTrait;
+use DB;
+
+// use daimekashiya\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use EntrustUserTrait;
+    // use EntrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -43,6 +45,10 @@ class User extends Authenticatable
     public function company()
     {
         return $this->hasOne('App\Models\Membership\Company');
+    }
+
+    public function permissions(){
+        return DB::table('role_user')->join('permission_role','permission_role.role_id','=','role_user.role_id')->join('permissions','permission_role.permission_id','=','permissions.id')->where('role_user.user_id', $this->id)->select('permissions.name')->get();
     }
 
 }

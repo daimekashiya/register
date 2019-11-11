@@ -29,5 +29,11 @@ Route::group(['prefix' => 'theme'], function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('membership/update/{id}', 'MembershipController@update');
-Route::get('/membership/approve/{id}', 'MembershipController@approve');
+
+
+Route::group(['prefix' => 'membership'], function() {
+    Route::post('update/{id}', 'MembershipController@update');
+    Route::get('approve/{id}', 'MembershipController@approve');
+    Route::get('delete/{id}', 'MembershipController@delete');
+});
+

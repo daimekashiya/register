@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\Facades\Storage;
 
+use App\Http\Requests\MembershipRequest;
+
 class RegisterController extends Controller
 {
     /* 
@@ -54,29 +56,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        
-        return Validator::make($data, [
-            'person_in_charge_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-
-
-            'company_name'  => ['required', 'string', 'max:255'],
-            'phone' => ['numeric','max:9999999999999999999'],
-            'fax' => ['numeric','max:9999999999999999999'],
-            'address'  => ['string', 'max:255'],
-            'website_url'  => ['string', 'max:255'],
-            'specialize_in_description'  => ['string', 'max:255'],
-            'reason_to_join'  => ['string', 'max:255']
-        ], [
-            'required'=>':attribute field is required',
-            'string'=>':attribute must be String',
-            'max'=>':attribute max size is :max',
-            'email'=>':attribute must be in name@name.domain',
-            'unique'=>':attribute :input already exist',
-            'min'=>':attribute min size is :min',
-            'numeric'=>':attribute must be numeric'
-        ]);
+        return Validator::make($data, MembershipRequest::rules_json(), MembershipRequest::messages_json() );
     }
 
     /**
@@ -87,15 +67,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = new User;
-        $user->name =$data['person_in_charge_name'];
-        $user->email = $data['email'];
-        $user->phone = $data['phone'];
-        $user->fax = $data['fax'];
-        $user->address = $data['address'];
-        $user->password = Hash::make($data['password']);
-        $user->save();   
-        
+        if($data['email'] != null)
+        {
+            $user = new User;
+            $user->name =$data['person_in_charge_name'];
+            $user->email = $data['email'];
+            $user->phone = $data['phone'];
+            $user->fax = $data['fax'];
+            $user->address = $data['address'];
+            $user->password = Hash::make($data['password']);
+            $user->save();   
+        }
+        else{
+            $user = User::whereEmail($data['email'])->first();
+        }
 
         $company = new Company;
         $company->name = $data['company_name'];

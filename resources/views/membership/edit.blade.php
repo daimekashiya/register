@@ -14,7 +14,7 @@
                         <div class="form-group col-lg-12">
                             @if(Auth::user()->company != null )
                                 <center>
-                                    <img class="rounded shadow" src="{{ asset('storage/'.Auth::user()->company->logo_url ) }}" style="height:150px"/><br>
+                                    <img class="rounded shadow" src="{{ Auth::user()->company->logo_url ? asset('storage/'.Auth::user()->company->logo_url ) : asset('green_blue/images/120x120_avatar1.png') }}" style="height:150px"/><br>
                                 </center>
                             @endif
                         </div>
@@ -26,12 +26,12 @@
                     
                         <div class="form-group col-lg-4">
                             <label>Person In Charge</label>
-                            <input type="text" class="form-control" placeholder="Enter Person In Charge Name" name="person_in_charge_name" value="{{ Auth::user()->company != null ? Auth::user()->company->name : null }}" required> 
+                            <input type="text" class="form-control" placeholder="Enter Person In Charge Name" name="person_in_charge_name" value="{{ Auth::user()->company != null ? Auth::user()->company->name : null }}" > 
                         </div>
                     
                         <div class="form-group col-lg-4">
                             <label>Email </label>
-                            <input type="text" class="form-control" placeholder="Enter Email" name="email" value="{{ Auth::user()->company != null ? Auth::user()->company->email : null }}" required>  
+                            <input type="text" class="form-control" placeholder="Enter to update Email" name="email" value="{{ Auth::user()->company != null ? Auth::user()->company->email : null }}" >  
                         </div>
                     
                         <div class="form-group col-lg-4">
@@ -47,12 +47,12 @@
                     
                         <div class="form-group col-lg-4">
                             <label>Contact Number</label>
-                            <input type="text" class="form-control" placeholder="Enter Contact Number" name="phone" value="{{ Auth::user()->company != null ? Auth::user()->company->phone : null }}">  
+                            <input type="text" class="form-control" placeholder="Numeric only" name="phone" value="{{ Auth::user()->company != null ? Auth::user()->company->phone : null }}">  
                         </div>
                     
                         <div class="form-group col-lg-4">
                             <label>Fax Number</label>
-                            <input type="text" class="form-control" placeholder="Enter Fax Number" name="fax" value="{{ Auth::user()->company != null ? Auth::user()->company->fax : null }}">  
+                            <input type="text" class="form-control" placeholder="Numeric only" name="fax" value="{{ Auth::user()->company != null ? Auth::user()->company->fax : null }}">  
                         </div>
                         
                         <div class="form-group col-lg-4">
@@ -84,7 +84,7 @@
                         </div>
                     
                         <div class="form-group col-lg-12">
-                            <h5>Categories</h5>
+                            <h6>Categories</h6>
                         </div>
                 
                         @include('_partials.lkp.lkpcategories.dropdown', [ 'company'=>  Auth::user()->company  ] )        

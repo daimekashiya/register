@@ -67,13 +67,14 @@
 
                     <div class="author-info">
 
-                      <span class="author-name">{{$company->email}}</span>
-                      <span class="author-position">Phone:{{$company->phone}}</span>
+                      {{-- <span class="author-name">{{$company->email}}</span>
+                      <span class="author-position">Phone:{{$company->phone}}</span> --}}
                       @auth
                       @if(Auth::user()->permissions()->where('name','approve_company')->count() > 0)
-                      @if($company->approved == 0)
-                      <span class="author-position"><a href="{{URL::to('membership/approve/'.$company->id) }}" class="btn btn-small btn-primary" style="width:100%">Approve</a></span>
-                      @endif
+                        @if($company->approved == 0)
+                        <span class="author-position"><a href="{{URL::to('membership/approve/'.$company->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-small btn-primary" style="width:100%">Approve</a></span>
+                        @endif
+                        <span class="author-position"><a href="{{URL::to('membership/delete/'.$company->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-small btn-style-3" style="width:100%">Delete</a></span>
                       @endif   
                       @endauth                
 
@@ -93,10 +94,10 @@
                           {{$company->specialize_in_description}}<br>
                           <b>Reason to Join :</b>
                           {{$company->reason_to_join}}<br>
-                          {{-- <b>Phone :</b>
-                          {{$company->phone}}<br> --}}
-                          {{-- <b>Email :</b>
-                          {{$company->email}}<br> --}}
+                          <b>Phone :</b>
+                          {{$company->phone}}<br>
+                          <b>Email :</b>
+                          {{$company->email}}<br>
                           <b>Fax :</b>
                           {{$company->fax}}<br>
                           <b>Website :</b>

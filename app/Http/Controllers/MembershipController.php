@@ -9,6 +9,8 @@ use App\User;
 use App\Models\Membership\Company;
 use App\Models\Membership\Bridge\CompanyLkpCategory;
 
+use App\Http\Requests\MembershipRequest;
+
 class MembershipController extends Controller
 {
     /**
@@ -77,7 +79,7 @@ class MembershipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MembershipRequest $request, $id)
     {
         $user = User::find($id);
         //dd('request:'.$request->email , 'user:'.$user->email);
@@ -154,5 +156,14 @@ class MembershipController extends Controller
 
         return redirect('home')->withSuccess('Company Approved');
     }
+
+    public function delete($id)
+    {
+        CompanyLkpCategory::whereCompanyId($id)->forceDelete();
+        Company::find($id)->forceDelete();
+
+        return redirect('home')->withSuccess('Company Deleted');
+    }
+
 
 }

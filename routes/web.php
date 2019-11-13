@@ -28,6 +28,8 @@ Route::group(['prefix' => 'theme'], function() {
 
 Auth::routes();
 
+Route::get('/FrontPage', 'FrontPageController@index')->name('FrontPage');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

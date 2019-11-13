@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\View;
 
 use App\Http\View\Composers\LkpCategoriesComposer;
 
+use Illuminate\Support\Facades\Schema;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         // View::composer( ['membership.create','membership.edit'] , function($view) {
         //     $view->with( 'categories', LkpCategory::all() );
         // });
-        
+        Schema::defaultStringLength(191);
         View::composer( ['_partials.lkp.lkpcategories.*'] , LkpCategoriesComposer::class );
     }
 }

@@ -101,8 +101,8 @@
             <div class="col-sm-6">
               
               <ul class="contact-info">
-                <li>{{ __('layouts.phone') }}: <a href="#">800-987-65-43</a></li>
-                <li>{{ __('layouts.email') }}: <a href="#">info@companyname.com</a></li>
+                <li>{{ __('layouts.phone') }}: <a href="#">+603 7845 5233</a></li>
+                <li>{{ __('layouts.email') }}: <a href="#">enquiry@pplbmalaysia.org</a></li>
               </ul>
 
             </div>
@@ -217,6 +217,10 @@
 
                         <!-- menu L1 single -->
                         <li><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
+                        <li><a href="{{ route('home') }}">{{ __('About Us') }}</a></li>
+                        <li><a href="{{ route('home') }}">{{ __('Registered Member') }}</a></li>
+                        <li><a href="{{ route('home') }}">{{ __('Contact Us') }}</a></li>
+                        <li><a href="{{ route('home') }}">{{ __('Gallery') }}</a></li>
                         
                         <!-- menu L1 single -->
                         
@@ -267,13 +271,16 @@
               <div class="widget">
                 <h6 class="widget-title">{{ __('layouts.contact_us') }}</h6>
                 <p>{{ config('app.name') }}<br>
-                9870 St Vincent Place, Glasgow, <br>
-                DC 45 Fr 45</p>
+                Persatuan Pengusaha Logistik Bumiputera (PPLB)<br>
+                No 2, Jalan PJU 1A/10,<br>
+                Taman Perindustrian Jaya,<br>
+                46050 Ara Damansara,<br>
+                Selangor</p>
 
                 <ul class="contact-info">
 
-                  <li><span class="licon-telephone"></span> <a href="callto:18005596580">+ 1 800 559 6580</a></li>
-                  <li><span class="licon-at-sign"></span> <a href="mailto:mail@companyname.com">mail@companyname.com</a></li>
+                  <li><span class="licon-telephone"></span> <a href="callto:18005596580">+603 7845 5233</a></li>
+                  <li><span class="licon-at-sign"></span> <a href="mailto:mail@companyname.com">enquiry@pplbmalaysia.org</a></li>
 
                 </ul>
                 <ul class="social-icons">

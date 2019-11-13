@@ -8,6 +8,6 @@ class FrontPageController extends Controller
 {
     public function index()
     {
-        return view('FrontPage');
+        return view('FrontPage2');
     }
 }

@@ -1,3 +1,20 @@
+@auth
+@if(Auth::user()->permissions()->where('name','approve_company')->count() > 0)
+@php 
+    $companies = \App\Models\Membership\Company::paginate(10) ; 
+@endphp
+@else
+@php 
+    $companies = \App\Models\Membership\Company::whereApproved(1)->paginate(10) ; 
+@endphp
+@endif
+@else
+@php
+  $companies = \App\Models\Membership\Company::whereApproved(1)->paginate(10) ; 
+@endphp
+@endauth
+
+
 @extends('layouts.theme.header1')
     <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 @section('content')
@@ -35,23 +52,7 @@
             <div class="row">
         
               <div class="col-sm-6">
-                
-                @auth
-                  @if(Auth::user()->permissions()->where('name','approve_company')->count() > 0)
-                  @php 
-                      $companies = \App\Models\Membership\Company::paginate(10) ; 
-                  @endphp
-                  @else
-                  @php 
-                      $companies = \App\Models\Membership\Company::whereApproved(1)->paginate(10) ; 
-                  @endphp
-                  @endif
-                @else
-                  @php
-                    $companies = \App\Models\Membership\Company::whereApproved(1)->paginate(10) ; 
-                  @endphp
-                @endauth
-        
+                        
                 @if($companies->count() > 0)
                 @foreach($companies as $company)
 

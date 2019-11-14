@@ -20,4 +20,14 @@ class FrontPageController extends Controller
     {
         return view('membership.index');
     }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    public function gallery()
+    {
+        return view('gallery');
+    }
 }

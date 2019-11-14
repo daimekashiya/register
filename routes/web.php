@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('membership.home');
+    return view('FrontPage');
 });
 
 Route::get('theme', function () {
@@ -33,6 +33,12 @@ Route::get('/FrontPage', 'FrontPageController@index')->name('FrontPage');
 Route::get('/about', 'FrontPageController@about')->name('about');
 
 Route::get('/membership', 'FrontPageController@membership')->name('membership');
+
+Route::get('/contact', 'FrontPageController@contact')->name('contact');
+
+Route::get('/gallery', 'FrontPageController@gallery')->name('gallery');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => 'membership'], function() {

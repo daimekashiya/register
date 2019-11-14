@@ -219,8 +219,8 @@
                         <li><a href="{{ route('FrontPage') }}">{{ __('Home') }}</a></li>
                         <li><a href="{{ route('about') }}">{{ __('About Us') }}</a></li>
                         <li><a href="{{ route('membership') }}">{{ __('Registered Member') }}</a></li>
-                        <li><a href="{{ route('home') }}">{{ __('Contact Us') }}</a></li>
-                        <li><a href="{{ route('home') }}">{{ __('Gallery') }}</a></li>
+                        <li><a href="{{ route('contact') }}">{{ __('Contact Us') }}</a></li>
+                        <li><a href="{{ route('gallery') }}">{{ __('Gallery') }}</a></li>
                         
                         <!-- menu L1 single -->
                         
@@ -280,7 +280,7 @@
                 <ul class="contact-info">
 
                   <li><span class="licon-telephone"></span> <a href="callto:18005596580">+603 7845 5233</a></li>
-                  <li><span class="licon-at-sign"></span> <a href="mailto:mail@companyname.com">enquiry@pplbmalaysia.org</a></li>
+                  <li><span class="licon-at-sign"></span> <a href="mailto:enquiry@pplbmalaysia.org">enquiry@pplbmalaysia.org</a></li>
 
                 </ul>
                 <ul class="social-icons">

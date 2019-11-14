@@ -162,7 +162,7 @@
 
               <!--Logo-->
               
-              <a href="{{URL::to('/')}}" class="logo">
+              <a href="{{URL::to('/FrontPage')}}" class="logo">
           
                 <img src="{{asset('pplb-logo.png')}}" alt="">
 
@@ -216,9 +216,9 @@
                         <!-- menu L1 with child --> --}}
 
                         <!-- menu L1 single -->
-                        <li><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
-                        <li><a href="{{ route('home') }}">{{ __('About Us') }}</a></li>
-                        <li><a href="{{ route('home') }}">{{ __('Registered Member') }}</a></li>
+                        <li><a href="{{ route('FrontPage') }}">{{ __('Home') }}</a></li>
+                        <li><a href="{{ route('about') }}">{{ __('About Us') }}</a></li>
+                        <li><a href="{{ route('membership') }}">{{ __('Registered Member') }}</a></li>
                         <li><a href="{{ route('home') }}">{{ __('Contact Us') }}</a></li>
                         <li><a href="{{ route('home') }}">{{ __('Gallery') }}</a></li>
                         

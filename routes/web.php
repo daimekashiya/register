@@ -30,7 +30,9 @@ Auth::routes();
 
 Route::get('/FrontPage', 'FrontPageController@index')->name('FrontPage');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about', 'FrontPageController@about')->name('about');
+
+Route::get('/membership', 'FrontPageController@membership')->name('membership');
 
 
 Route::group(['prefix' => 'membership'], function() {
